@@ -1,0 +1,230 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600');
+
+$black: #333;
+$white: #FAFAFA;
+$red: #e3767e;
+$pink: #ece0e2;
+$purple: #250f4e;
+
+
+body {
+    background-color: $pink;
+    color: $black;
+    font-family: 'Raleway', sans-serif;
+}
+
+a {
+    color: $red;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    margin-right: 4px;
+}
+
+.container {
+    @extend .flex-row;
+    padding: 10px;
+}
+
+.buttonWithIcon {
+    @extend .flex-row;
+    align-items: center;
+    background-color: transparent;
+    color: $red;
+    font-weight: 600;
+    border: 2px solid $red;
+    cursor: pointer;
+    padding: 4px 10px;
+    margin: 10px;
+    transition: all .3s;
+    &:hover {
+        background-color: rgba($red, .2);
+        border-color: rgba($red, .2);
+    }
+}
+
+
+
+/************
+** Results **
+************/
+
+.results {
+    flex: 6;
+    background-color: $white;
+    padding: 0px 10px 10px;
+    margin: 10px;
+}
+
+.results-header {
+    margin-left: 10px;
+
+    .results-header-text {
+        border-bottom: 4px solid $purple;
+    }
+}
+
+.text-opacity {
+    opacity: .5;
+}
+
+.tracks {
+    @extend .flex-row;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.track {
+    @extend .flex-column;
+    font-size: .9em;
+    margin: 10px;
+
+    &:hover {
+        .image-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+        .track-text {
+            color: $red;
+        }
+    }
+
+    .image-wrapper {
+        max-width: 150px;
+        position: relative;
+    }
+
+    .image-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: $white;
+        opacity: .6;
+        transform: translate(40%, 30%);
+        transition: all .3s;
+    }
+
+    img {
+        max-width: 150px;
+        margin-bottom: 5px;
+    }
+
+    .track-text {
+        text-align: left;
+        transition: all .3s;
+        &.artist {
+            font-weight: 300;
+        }
+        &.title {
+            font-weight: 500;
+        }
+    }
+    
+}
+
+.playlist {
+    @extend .flex-row;
+
+    .playlist-message {
+        @extend .flex-column;
+        justify-content: center;
+    }
+}
+
+
+
+/*************
+** Calendar **
+*************/
+
+.calendar {
+    @extend .flex-column;
+    align-self: start;
+    margin: 10px;
+
+    .buttonWithIcon {
+        margin-left: 0;
+    }
+}
+
+.DayPicker {
+    flex: 2;
+    background-color: $purple;
+    color: $white;
+
+    .DayPicker-Weekday {
+        color: $red;
+    }
+
+    .DayPicker-Day {
+        transition: all .15s;
+    }
+
+    .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+        background-color: $red;
+    }
+
+    &:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+        background-color: rgba(#F0F8FF, .5);
+    }
+
+}
+
+
+
+/*****************
+** Login Screen **
+*****************/
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(45deg, $pink, $red);
+}
+
+.content {
+    color: $white;
+
+    p {
+        font-size: 1.25em;
+    }
+}
+
+.button-transparent {
+    border-bottom: 4px solid $white;
+    cursor: pointer;
+}
+
+
+
+/*******************
+** Medias Queries **
+*******************/
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+    .calendar {
+        align-self: center;
+        align-items: center;
+    }
+    .tracks {
+        justify-content: center;
+    }
+}
